@@ -4,9 +4,9 @@
 
 .input {
     field-sizing: content;
+    font-size: inherit;
     padding: 0;
     margin: 0;
-    background-color: pink;
     outline: none;
     border: none;
 }

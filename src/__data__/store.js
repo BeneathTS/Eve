@@ -1,62 +1,32 @@
 import { create } from 'zustand'
 
 export const useCodeStore  = create((set, get) => ({
-    imports: "import React, { memo, useState } from 'react'\n",
-    name: "export const Component = memo(({",
-    props: {},
-    begin: '}) => {',
-    state: '',
-    logic: '',
-    renderStart: 'return (',
-    renderBody: '',
-    renderEnd: ')',
-    end: '})',
-    setProps: (newProp) => {
-        const { props } = get()
-
-        if (props[newProp]) {
-            return 
-        }
-
-        set((state) => ({
-            props: { ...state.props, [newProp]: void '' }
-        }))
+    meta: {
+        exported: true,
+        name: "Default_component_name",
+        memoized: true,
+        // imports: [
+        // ],
+        props: {
+            propNameId: void 0,
+            anotherPropName: "default Value"
+        },
     },
-    deleteProps: (newProp) => {
-        const prevProps = get().props
-            
-        delete prevProps[newProp]
-
-        set({ props: prevProps })
+    body: {
+        state: {
+            stateName: {
+                initialValue: {
+                    src: 'test'
+                }
+            },
+            anotherStateName: {
+                initialValue: {
+                    srcAnchor: "anotherPropName",
+                }
+            }
+        },
+        // logicBlocks: {}
     },
-
-    getComponentCode: () => {
-        const {
-            imports,
-            name,
-            props,
-            begin,
-            state,
-            logic,
-            renderStart,
-            renderBody,
-            renderEnd,
-            end,
-        } = get()
-
-        return ({
-            imports,
-            name,
-            props: Object.keys(props).join(',\n'),
-            begin,
-            state,
-            logic,
-            renderStart,
-            renderBody,
-            renderEnd,
-            end,
-        })
-    },
-    
-    // removeAllBears: () => set({ bears: 0 }),
+    // content: {},
+    // elements: [],
 }))

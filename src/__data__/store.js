@@ -5,11 +5,9 @@ export const useCodeStore  = create((set, get) => ({
         exported: true,
         name: "Component",
         memoized: true,
-        // imports: [
-        // ],
         props: {
-            propNameId: void 0,
-            anotherPropName: "default Value"
+            // propNameId: void 0,
+            // anotherPropName: "default Value"
         },
     },
     body: {
@@ -27,6 +25,17 @@ export const useCodeStore  = create((set, get) => ({
         },
         // logicBlocks: {}
     },
+    addProp: (newProp) => set((state) => {
+        state.meta.props[newProp] = void ''
+
+        return ({ meta: {...state.meta } })
+
+    }),
+    removeProp: (removedProp) => set((state) => {
+        delete state.meta.props[removedProp]
+
+        return ({ meta: {...state.meta } })
+    })
     // content: {},
     // elements: [],
 }))

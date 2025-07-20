@@ -43,7 +43,7 @@ const [edges, setEdges] = useState([])
 				panOnDrag={false}
 				panOnScrollSpeed={0.75}
 			>
-				{/* <NodesList /> */}
+				<NodesList />
 				<Background bgColor="#262626"/>
 			</ReactFlow>
 		</div>

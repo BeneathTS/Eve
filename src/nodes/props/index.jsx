@@ -15,9 +15,9 @@ export const PropsNode = ({
 
     const store = useCodeStore()
 
-    const handleMount = (propName) => store.setProps(propName)
-    const handleAccept = (propName) => store.setProps(propName.trim())
-    const handleEdit = (propName) => store.deleteProps(propName)
+    const handleMount = (propName) => store.addProp(propName)
+    const handleAccept = (propName) => store.addProp(propName.trim())
+    const handleEdit = (propName) => store.removeProp(propName)
 
     const onClick = () => {
         setChildren((prev) => [

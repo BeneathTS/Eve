@@ -22,19 +22,18 @@ export const getBaseTemplate = ({
     if (memoized) {
         template.push('memo(')
         importResolver.pushImport('memo', 'react', 'named')
-        importResolver.pushImport('test', 'test', 'named')
     }
 
-    template.push("({\n")
+    template.push("({")
 
-    //mb useless
-    anchors.props = template.length
-    template.push('    [props anchor]')
+    for(const [prop, defaultValue] of Object.entries(props)) {
+        template.push(`\n\t${prop}${defaultValue ? " = \"" + defaultValue + "\"" : ''},`)
+    }
 
     template.push("\n}) => {\n")
 
     anchors.body = template.length
-    template.push("    [body anchor]\n")
+    template.push("//\t[body anchor]\n")
 
     template.push("}")
 

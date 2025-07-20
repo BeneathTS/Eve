@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export const useCodeStore  = create((set, get) => ({
     meta: {
         exported: true,
-        name: "Default_component_name",
+        name: "Component",
         memoized: true,
         // imports: [
         // ],

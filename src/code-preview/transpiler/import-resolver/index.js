@@ -1,4 +1,4 @@
-export class ImportResolver {
+class ImportResolver {
     constructor() {
         this.importsDepsTree = {}
 
@@ -60,3 +60,5 @@ export class ImportResolver {
         return importsList.join('\n')
     }
 }
+
+export const importResolver = new ImportResolver()

@@ -1,0 +1,19 @@
+.node-wrapper {
+    min-width: 150px;
+}
+
+.item-wrapper {
+    position: relative;
+    margin: 0;
+    padding-top: 8px;
+
+    &:not(:last-of-type) {
+        padding-bottom: 8px;
+        border-bottom: 2px solid;
+    }
+}
+
+.default-value {
+    font-size: 12px;
+    opacity: 0.6;
+}

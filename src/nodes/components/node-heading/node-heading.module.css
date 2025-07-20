@@ -1,0 +1,17 @@
+.node-heading {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+.add-button {
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: #afafaf;
+    border-radius: 50%;
+    flex-shrink: 0;
+}

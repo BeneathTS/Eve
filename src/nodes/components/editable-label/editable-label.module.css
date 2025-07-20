@@ -1,0 +1,12 @@
+.label {
+    cursor: text;
+}
+
+.input {
+    field-sizing: content;
+    padding: 0;
+    margin: 0;
+    background-color: pink;
+    outline: none;
+    border: none;
+}

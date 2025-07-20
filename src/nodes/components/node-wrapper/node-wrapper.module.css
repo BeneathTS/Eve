@@ -1,0 +1,7 @@
+.wrapper {
+    background-color: white;
+    border: solid 2px pink;
+    border-radius: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+}

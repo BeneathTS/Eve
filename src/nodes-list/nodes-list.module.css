@@ -1,0 +1,29 @@
+.wrapper {
+    background-color: violet;
+    border-radius: 12px;
+    position: absolute;
+    padding: 8px;
+    top: 16px;
+    left: 16px;
+
+    & > * {
+        margin: 0;
+    }
+
+    & > ul {
+        padding: 0;
+        list-style: none;
+    }
+}
+
+.item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 4px;
+    margin-block: 4px;
+    box-sizing: border-box;
+
+    &:hover {
+        background-color: grey;
+    }
+}

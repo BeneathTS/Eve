@@ -1,26 +1,12 @@
-import { useRef, useEffect, useState } from 'react'
-// import { useCodeStore } from '../__data__/store'
+// import { useRef, useEffect, useState } from 'react'
+import { useAstTree } from '../__data__/store'
 import Editor from '@monaco-editor/react'
 import { parse } from "@babel/parser"
+import { prettyPrint as render } from "recast";
 
 export const CodePreview = () => {
-    const [code, setCode] = useState('')
-    // const store = useCodeStore()
+    const ast = useAstTree()
     // const handleChange = (value) => setCode(value)
-
-    useEffect(() => {
-        parse(code, {
-            createImportExpressions: true,
-            allowImportExportEverywhere: true,
-            sourceType: "module",
-            plugins: [
-                "jsx",
-                // "typescript",
-                "throwExpressions",
-            ],
-            errorRecovery: true,
-        })
-    }, [code])
 
     const handleDrop = (event) => {
         event.preventDefault()
@@ -30,7 +16,19 @@ export const CodePreview = () => {
                 const file = item.getAsFile()
 
                 if (/\.(js|jsx)$/.test(file.name)) {
-                    setCode(await file.text())
+                   const astTree = parse(await file.text(), {
+                        createImportExpressions: true,
+                        allowImportExportEverywhere: true,
+                        sourceType: "module",
+                        plugins: [
+                            "jsx",
+                            // "typescript",
+                            "throwExpressions",
+                        ],
+                        errorRecovery: true,
+                    })
+
+                    ast.set(astTree)
                 }
             }
         })
@@ -38,8 +36,8 @@ export const CodePreview = () => {
 
     return (
         <div
-        onDrop={handleDrop}
-        style={{ width: "1000px" }}
+            onDrop={handleDrop}
+            style={{ width: "1000px" }}
         >
             <Editor
                 width="100%"
@@ -48,11 +46,12 @@ export const CodePreview = () => {
                 theme="vs-dark"
                 // onChange={handleChange}
                 options={{
-                    // readOnly: true,
+                    readOnly: true,
                     minimap: { enabled: false }
                 }}
-                value={code}
+                value={render(ast.tree, { tabWidth: 4, range: true }).code}
             />
         </div>
     )
 }
+

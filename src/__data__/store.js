@@ -1,4 +1,11 @@
 import { create } from 'zustand'
+import { parse } from "@babel/parser"
+
+export const useAstTree = create((set, get) => ({
+    tree: parse(''),
+    set: (ast) => set({ tree: ast }),
+    update: () => {},
+}))
 
 export const useCodeStore  = create((set, get) => ({
     meta: {
@@ -25,17 +32,18 @@ export const useCodeStore  = create((set, get) => ({
         },
         // logicBlocks: {}
     },
-    addProp: (newProp) => set((state) => {
-        state.meta.props[newProp] = void ''
 
-        return ({ meta: {...state.meta } })
+    // addProp: (newProp) => set((state) => {
+    //     state.meta.props[newProp] = void ''
 
-    }),
-    removeProp: (removedProp) => set((state) => {
-        delete state.meta.props[removedProp]
+    //     return ({ meta: {...state.meta } })
 
-        return ({ meta: {...state.meta } })
-    })
+    // }),
+    // removeProp: (removedProp) => set((state) => {
+    //     delete state.meta.props[removedProp]
+
+    //     return ({ meta: {...state.meta } })
+    // })
     // content: {},
     // elements: [],
 }))
